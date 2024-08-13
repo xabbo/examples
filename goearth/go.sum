@@ -1,0 +1,6 @@
+golang.org/x/exp v0.0.0-20240613232115-7f521ea00fb8 h1:yixxcjnhBmY0nkL253HFVIm0JsFHwrHdT3Yh6szTnfY=
+golang.org/x/exp v0.0.0-20240613232115-7f521ea00fb8/go.mod h1:jj3sYF3dwk5D+ghuXyeI3r5MFf+NT2An6/9dOA95KSI=
+golang.org/x/sys v0.24.0 h1:Twjiwq9dn6R1fQcyiK+wQyHWfaz/BJB+YIpzU/Cv3Xg=
+golang.org/x/sys v0.24.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+xabbo.b7c.io/goearth v0.3.5 h1:aVVh/YakDNra9EjVxh8c9tmoPvu++n0KFAwsRiBB6F0=
+xabbo.b7c.io/goearth v0.3.5/go.mod h1:2SdOFXPXIW/+XAFw31E4kFTFuO5bpUiqNKG0rU/NeBQ=
