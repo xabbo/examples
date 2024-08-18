@@ -1,0 +1,11 @@
+[submodule "gearth/lib/common"]
+	path = gearth/lib/common
+	url = https://github.com/xabbo/common
+	branch = next
+[submodule "gearth/lib/gearth"]
+	path = gearth/lib/gearth
+	url = https://github.com/xabbo/gearth
+	branch = next
+[submodule "gearth/lib/messages"]
+	path = gearth/lib/messages
+	url = https://github.com/xabbo/messages
