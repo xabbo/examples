@@ -47,7 +47,7 @@ ext.Intercept([Out.Chat, Out.Shout, Out.Whisper], e => {
     {
         // If so, we block this packet.
         e.Block();
-        string[] split = msg.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        string[] split = msg[1..].Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
         // Then parse the command and args and pass it to the handler.
         HandleCommand(split[0], split[1..]);
     }
@@ -74,6 +74,7 @@ void HandleCommand(string cmd, string[] args)
         // Parse the coordinates.
         if (!int.TryParse(args[0], out int x)) return;
         if (!int.TryParse(args[1], out int y)) return;
+        Console.WriteLine($"Moving to {x}, {y}");
         // Shockwave requires the move coordinates to be short integers.
         if (ext.Session.Is(ClientType.Shockwave))
             ext.Send(Out.MoveAvatar, (short)x, (short)y);
