@@ -9,7 +9,9 @@
 
   <ItemGroup Label="References">
     <ProjectReference Include="$(XabboCommonDir)src/Xabbo.Common/Xabbo.Common.csproj" />
+    <ProjectReference Include="$(XabboCommonDir)src/Xabbo.Common.Generator/Xabbo.Common.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="$(XabboGEarthDir)src/Xabbo.GEarth/Xabbo.GEarth.csproj" />
+    <ProjectReference Include="$(XabboCoreDir)src/Xabbo.Core/Xabbo.Core.csproj" />
     <ProjectReference Include="$(XabboMessagesDir)src/Xabbo.Messages/Xabbo.Messages.csproj" />
   </ItemGroup>
 

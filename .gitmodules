@@ -9,3 +9,6 @@
 [submodule "gearth/lib/messages"]
 	path = gearth/lib/messages
 	url = https://github.com/xabbo/messages
+[submodule "gearth/lib/core"]
+	path = gearth/lib/core
+	url = https://github.com/xabbo/core

@@ -14,4 +14,8 @@ Then run an example by name e.g. `dotnet run --project minimal`.
 
 ### [minimal](minimal)
 
-A minimal extension example using C# top-level statements.
+A minimal example using C# top-level statements.
+
+### [extended](extended)
+
+An extended example using inheritance of the GEarthExtension class.
