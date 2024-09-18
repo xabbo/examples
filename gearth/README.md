@@ -12,10 +12,14 @@ git submodule foreach 'git checkout -b xabbo/examples'
 
 Then run an example by name e.g. `dotnet run --project minimal`.
 
-### [minimal](minimal)
+### [minimal](src/minimal)
 
 A minimal example using C# top-level statements.
 
-### [extended](extended)
+### [extended](src/extended)
 
 An extended example using inheritance of the GEarthExtension class.
+
+### [MackleEverywhere](src/MackleEverywhere) ([minimal](src/MackleEverywhere.Minimal))
+
+An inherited / minimal example extension based on the [example extension](https://github.com/sirjonasxx/G-Earth-template-extensions/tree/master/MackleEverywhere) by sirjonasxx.
