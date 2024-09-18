@@ -19,12 +19,12 @@
     <Content Include="Generated/**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\lib\common\src\Xabbo.Common\Xabbo.Common.csproj" />
-    <ProjectReference Include="..\lib\common\src\Xabbo.Common.Generator\Xabbo.Common.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-    <ProjectReference Include="..\lib\gearth\src\Xabbo.GEarth\Xabbo.GEarth.csproj" />
-    <ProjectReference Include="..\lib\core\src\Xabbo.Core\Xabbo.Core.csproj" />
-    <ProjectReference Include="..\lib\messages\src\Xabbo.Messages\Xabbo.Messages.csproj" />
+  <ItemGroup Label="References">
+    <ProjectReference Include="$(XabboCommonDir)src/Xabbo.Common/Xabbo.Common.csproj" />
+    <ProjectReference Include="$(XabboCommonDir)src/Xabbo.Common.Generator/Xabbo.Common.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="$(XabboGEarthDir)src/Xabbo.GEarth/Xabbo.GEarth.csproj" />
+    <ProjectReference Include="$(XabboCoreDir)src/Xabbo.Core/Xabbo.Core.csproj" />
+    <ProjectReference Include="$(XabboMessagesDir)src/Xabbo.Messages/Xabbo.Messages.csproj" />
   </ItemGroup>
 
 </Project>

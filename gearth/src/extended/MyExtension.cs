@@ -2,6 +2,7 @@ using Xabbo.Core;
 using Xabbo.Core.Messages.Incoming;
 using Xabbo.Core.Messages.Outgoing;
 using Xabbo.GEarth;
+using Xabbo.Messages;
 
 namespace Xabbo.Examples.Extended;
 
@@ -50,8 +51,8 @@ partial class MyExtension : GEarthExtension
     // by utilizing messages instead of working with packets directly.
 
     // Intercept incoming chat (talk, shout, and whisper) messages.
-    [Intercepts]
-    void HandleEntityChat(EntityChatMsg chat)
+    [Intercept]
+    void HandlePingPong(AvatarChatMsg chat)
     {
         // If any incoming chat message contains "ping":
         if (chat.Message.Contains("ping"))
@@ -59,12 +60,28 @@ partial class MyExtension : GEarthExtension
             Send(new ShoutMsg("pong"));
     }
 
-    // Intercept outgoing chat messages. Because we need to block the message,
+    [Intercept]
+    void BlockChatMessages(Intercept e, AvatarChatMsg chat)
+    {
+        // Block avatar chat messages if they contain the word "block".
+        if (chat.Message.Contains("block"))
+            e.Block();
+    }
+
+    [Intercept]
+    IMessage? ModifyChatMessages(AvatarChatMsg chat)
+    {
+        // Replace "apple" with "orange" in incoming chat messages.
+        return chat with {
+            Message = chat.Message.Replace("apple", "orange")
+        };
+    }
+
+    // Intercept outgoing chat messages. Because we may need to block the message,
     // we need to accept an Intercept<T> instance and specify the Message type.
-    [Intercepts]
+    // This is an alternative to the above BlockChatMessages signature.
+    [Intercept]
     void HandleChat(Intercept<ChatMsg> e)
-    // We could also use an alternative method signature:
-    // - void HandleChat(Intercept e, ChatMsg chat)
     {
         // The ChatMsg can be accessed via e.Msg.
         var chat = e.Msg;

@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "minimal", "minimal\Minimal.csproj", "{975471DC-A646-404C-BD64-8B04B20A9097}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "minimal", "src\minimal\Minimal.csproj", "{975471DC-A646-404C-BD64-8B04B20A9097}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{B1BC5C33-36CD-4642-8AA3-E9D015A83BA4}"
 EndProject
@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CD266FBB-043
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xabbo.Messages", "lib\messages\src\Xabbo.Messages\Xabbo.Messages.csproj", "{5BB6D4AD-AF91-443B-9DB1-9EF0F8C3905A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extended", "extended\Extended.csproj", "{CCF2EE06-9E09-40A8-B82E-D17E20254AEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extended", "src\extended\Extended.csproj", "{CCF2EE06-9E09-40A8-B82E-D17E20254AEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{6D0A62FC-A854-45A7-9BCF-A709E802260D}"
 EndProject
