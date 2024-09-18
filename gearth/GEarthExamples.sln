@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -33,7 +33,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DCBF7419-3BF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xabbo.Core", "lib\core\src\Xabbo.Core\Xabbo.Core.csproj", "{95FF4981-BD0B-4178-9F99-E53BEBDDE6C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xabbo.Examples.Core", "core\Xabbo.Examples.Core.csproj", "{EA021C65-F0F0-41BE-9241-926D84A5CE22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MackleEverywhere", "src\MackleEverywhere\MackleEverywhere.csproj", "{7BD8DD87-F69F-435F-86A9-4F1878F16796}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MackleEverywhere.Minimal", "src\MackleEverywhere.Minimal\MackleEverywhere.Minimal.csproj", "{52A82DED-4C2E-419B-A13E-21F4139CA91D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,10 +70,14 @@ Global
 		{95FF4981-BD0B-4178-9F99-E53BEBDDE6C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95FF4981-BD0B-4178-9F99-E53BEBDDE6C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95FF4981-BD0B-4178-9F99-E53BEBDDE6C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA021C65-F0F0-41BE-9241-926D84A5CE22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA021C65-F0F0-41BE-9241-926D84A5CE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA021C65-F0F0-41BE-9241-926D84A5CE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA021C65-F0F0-41BE-9241-926D84A5CE22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BD8DD87-F69F-435F-86A9-4F1878F16796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BD8DD87-F69F-435F-86A9-4F1878F16796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BD8DD87-F69F-435F-86A9-4F1878F16796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BD8DD87-F69F-435F-86A9-4F1878F16796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52A82DED-4C2E-419B-A13E-21F4139CA91D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52A82DED-4C2E-419B-A13E-21F4139CA91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52A82DED-4C2E-419B-A13E-21F4139CA91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52A82DED-4C2E-419B-A13E-21F4139CA91D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F36CC528-DA37-4CCE-8E84-2EF003EA8B59} = {B1BC5C33-36CD-4642-8AA3-E9D015A83BA4}
