@@ -1,6 +1,7 @@
-using Xabbo;
+﻿using Xabbo;
 using Xabbo.Core;
 using Xabbo.Core.Messages.Incoming;
+using Xabbo.Core.Messages.Outgoing;
 using Xabbo.GEarth;
 
 // Based on the example G-Earth extension by sirjonasxx
@@ -15,10 +16,13 @@ var ext = new GEarthExtension(new GEarthOptions {
     Author = "b7"
 });
 
+string ownName = "";
+
 ext.Intercept<AvatarsAddedMsg>(avatars => {
     foreach (var user in avatars.OfType<User>())
     {
-        user.Name = "Macklebee";
+        if (user.Name != ownName)
+            user.Name = "Macklebee";
         user.Figure = ext.Session.IsShockwave
             ? "8311518001295012801125525"
             : "hr-828-58.hd-180-1.ch-210-73.lg-280-82.sh-295-1408";
@@ -26,5 +30,12 @@ ext.Intercept<AvatarsAddedMsg>(avatars => {
     }
     return avatars;
 });
+
+// Required for Shockwave because it appears to use your name to control your avatar.
+ext.Connected += (e) => {
+    if (e.PreEstablished)
+        ext.Send(new RequestUserDataMsg());
+};
+ext.Intercept<UserDataMsg>(msg => ownName = msg.UserData.Name);
 
 ext.Run();

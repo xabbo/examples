@@ -1,6 +1,7 @@
 using Xabbo;
 using Xabbo.Core;
 using Xabbo.Core.Messages.Incoming;
+using Xabbo.Core.Messages.Outgoing;
 using Xabbo.GEarth;
 using Xabbo.Messages;
 
@@ -19,12 +20,25 @@ namespace MackleEverywhere;
 )]
 partial class MackleEverywhereExtension : GEarthExtension
 {
+    private string ownName = "";
+
+    protected override void OnConnected(GameConnectedArgs e)
+    {
+        base.OnConnected(e);
+        if (e.PreEstablished)
+            Send(new RequestUserDataMsg());
+    }
+
+    [Intercept]
+    private void HandleUserData(UserDataMsg msg) => ownName = msg.UserData.Name;
+
     [Intercept]
     private IMessage? MakeMacklebees(AvatarsAddedMsg avatars)
     {
         foreach (var user in avatars.OfType<User>())
         {
-            user.Name = "Macklebee";
+            if (user.Name != ownName)
+                user.Name = "Macklebee";
             user.Figure = Session.IsShockwave
                 ? "8311518001295012801125525"
                 : "hr-828-58.hd-180-1.ch-210-73.lg-280-82.sh-295-1408";
