@@ -1,4 +1,4 @@
-﻿using Xabbo;
+using Xabbo;
 using Xabbo.Core;
 using Xabbo.Core.Messages.Incoming;
 using Xabbo.GEarth;
@@ -20,7 +20,7 @@ ext.Intercept<AvatarsAddedMsg>(avatars => {
     {
         user.Name = "Macklebee";
         user.Figure = ext.Session.IsShockwave
-            ? "8281718001280082950921022"
+            ? "8311518001295012801125525"
             : "hr-828-58.hd-180-1.ch-210-73.lg-280-82.sh-295-1408";
         user.Gender = Gender.Male;
     }

@@ -26,7 +26,7 @@ partial class MackleEverywhereExtension : GEarthExtension
         {
             user.Name = "Macklebee";
             user.Figure = Session.IsShockwave
-                ? "8281718001280082950921022"
+                ? "8311518001295012801125525"
                 : "hr-828-58.hd-180-1.ch-210-73.lg-280-82.sh-295-1408";
             user.Gender = Gender.Male;
         }
