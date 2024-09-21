@@ -34,7 +34,7 @@ ext.Intercept<AvatarsAddedMsg>(avatars => {
 // Required for Shockwave because it appears to use your name to control your avatar.
 ext.Connected += (e) => {
     if (e.PreEstablished)
-        ext.Send(new RequestUserDataMsg());
+        ext.Send(new GetUserDataMsg());
 };
 ext.Intercept<UserDataMsg>(msg => ownName = msg.UserData.Name);
 

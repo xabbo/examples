@@ -26,7 +26,7 @@ partial class MackleEverywhereExtension : GEarthExtension
     {
         base.OnConnected(e);
         if (e.PreEstablished)
-            Send(new RequestUserDataMsg());
+            Send(new GetUserDataMsg());
     }
 
     [Intercept]
