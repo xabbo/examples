@@ -4,22 +4,17 @@ A C# library for creating G-Earth extensions.
 
 ## examples
 
-To run these examples, first pull in the submodules with:
-```sh
-git submodule update --init
-git submodule foreach 'git checkout -b xabbo/examples'
-```
+To run these examples, you can use the dotnet CLI from this directory: `dotnet run --project src/Minimal`.\
+Or, use `dotnet run` after changing into one of the example directories.
 
-Then run an example by name e.g. `dotnet run --project minimal`.
-
-### [minimal](src/minimal)
+### [Minimal](src/Minimal)
 
 A minimal example using C# top-level statements.
 
-### [extended](src/extended)
+### [Extended](src/Extended)
 
 An extended example using inheritance of the GEarthExtension class.
 
 ### [MackleEverywhere](src/MackleEverywhere) ([minimal](src/MackleEverywhere.Minimal))
 
-An inherited / minimal example extension based on the [example extension](https://github.com/sirjonasxx/G-Earth-template-extensions/tree/master/MackleEverywhere) by sirjonasxx.
+An inherited / minimal example based on the [example extension](https://github.com/sirjonasxx/G-Earth-template-extensions/tree/master/MackleEverywhere) by sirjonasxx.
