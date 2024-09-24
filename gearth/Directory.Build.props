@@ -1,9 +1,8 @@
 <Project>
-    <PropertyGroup>
-        <Libs>$(MSBuildThisFileDirectory)lib/</Libs>
-        <XabboCommonDir>$(Libs)common/</XabboCommonDir>
-        <XabboCoreDir>$(Libs)core/</XabboCoreDir>
-        <XabboGEarthDir>$(Libs)gearth/</XabboGEarthDir>
-        <XabboMessagesDir>$(Libs)messages/</XabboMessagesDir>
-    </PropertyGroup>
+    <ItemGroup Label="Xabbo package references">
+      <PackageReference Include="Xabbo.Common" Version="1.0.0-beta.214" />
+      <PackageReference Include="Xabbo.Core" Version="1.0.0-beta.238" />
+      <PackageReference Include="Xabbo.GEarth" Version="1.0.0-beta.70" />
+      <PackageReference Include="Xabbo.Messages" Version="1.0.0-beta.1" />
+    </ItemGroup>
 </Project>
