@@ -1,13 +1,11 @@
 ﻿using Xabbo;
 using Xabbo.GEarth;
-
 using Xabbo.Core;
-using Xabbo.Core.Messages.Incoming;
-using Xabbo.Core.Messages.Outgoing;
-
-using Xabbo.Messages.Flash;
 using Xabbo.Core.Game;
 using Xabbo.Core.GameData;
+using Xabbo.Core.Messages.Incoming;
+using Xabbo.Core.Messages.Outgoing;
+using Xabbo.Messages.Flash;
 
 // Create the extension, providing the extension information.
 var ext = new GEarthExtension(new GEarthOptions {
@@ -16,16 +14,25 @@ var ext = new GEarthExtension(new GEarthOptions {
     Author = "b7",
     Version = "1.0"
 });
+var roomManager = new RoomManager(ext);
+var gameDataManager = new GameDataManager();
 
 // Register event handlers.
 ext.Initialized += (e) => Console.WriteLine($"Extension initialized. (connected:{e.IsGameConnected})");
 ext.Connected += (e) => Console.WriteLine($"Game connected. ({e.Host}:{e.Port})");
 ext.Disconnected += () => Console.WriteLine("Game disconnected!");
 
-// The following code works cross-client (on both Flash and Shockwave)
-// by utilizing Message classes instead of working with packets directly.
+// ----- Intercepting packets -----
+// Intercepts the incoming "Ping" packet.
+ext.Intercept(In.Ping, e => {
+    Console.WriteLine("Received ping.");
+});
 
-// Intercept incoming chat messages.
+// The following code works cross-client (on both Flash and Shockwave)
+// by utilizing message classes instead of working with packets directly.
+
+// ----- Intercepting messages -----
+// Intercept incoming chat messages by specifying the message type as a generic type argument.
 ext.Intercept<AvatarChatMsg>(chat => {
     // If any incoming chat message contains "ping":
     if (chat.Message.Contains("ping"))
@@ -33,28 +40,66 @@ ext.Intercept<AvatarChatMsg>(chat => {
         ext.Send(new ShoutMsg("pong"));
 });
 
-// Block avatar chat messages if they contain the word "block".
+// ----- Blocking messages -----
+// Block avatar chat messages if they contain the word "block"
+// by accepting 2 arguments: Intercept and AvatarChatMsg.
 ext.Intercept<AvatarChatMsg>((e, chat) => {
     if (chat.Message.Contains("block"))
         e.Block();
 });
 
-// Replace "apple" with "orange" in incoming chat messages.
+// ----- Modifying messages ------
+// Replace "apple" with "orange" in incoming chat messages
+// by returning a modified instance of AvatarChatMsg.
 ext.Intercept<AvatarChatMsg>(chat => chat with {
     Message = chat.Message.Replace("apple", "orange")
 });
 
-var roomManager = new RoomManager(ext);
+// ----- Request messages -----
+// Request messages allow you to send a request and asynchronously receive its response.
+// These are messages such as "GetUserDataMsg" and "GetRoomDataMsg".
+
+// Activated is called when the user activates the extension by
+// clicking the green play button in G-Earth.
+ext.Activated += () => {
+    // Run a task so we don't block the extension processing loop.
+    Task.Run(async () => {
+        try
+        {
+            Console.WriteLine("Requesting user data...");
+            var userData = await ext.RequestAsync(new GetUserDataMsg());
+            Console.WriteLine("Received user data.");
+            Console.WriteLine($"Your ID is: {userData.Id}. Your name is: '{userData.Name}'.");
+        }
+        catch (TimeoutException)
+        {
+            Console.WriteLine("The request timed out.");
+        }
+    });
+};
+
+// ----- Game state manager events -----
+// Game state managers such as the room manager do all the work
+// of intercepting, parsing and interpreting packets.
+// They allow you to subscribe to high level events without
+// needing to process packets or messages yourself.
+
+// AvatarsAdded is called when avatars (Users, Bots, Pets) are added to the room.
 roomManager.AvatarsAdded += (e) => {
     if (e.Avatars.Length == 1)
         Console.WriteLine($"{e.Avatars[0].Name} entered the room.");
 };
+// AvatarRemoved is called when an avatar is removed from the room.
 roomManager.AvatarRemoved += (e) => Console.WriteLine($"{e.Avatar.Name} left the room.");
+// AvatarChat is called when an a chat message is received.
 roomManager.AvatarChat += (e) => Console.WriteLine($"{e.Avatar.Name}: {e.Message}");
 
-var gameDataManager = new GameDataManager();
+// ----- Game data management -----
+// The game data manager lets you easily load resources
+// such as furni data for the current hotel.
 gameDataManager.Loaded += () => Console.WriteLine($"Loaded {gameDataManager.Furni?.Count} furni");
 ext.Connected += (e) => {
+    // Run an asynchronous task so we don't block the extension processing loop.
     Task.Run(async () => {
         try
         {
@@ -63,13 +108,13 @@ ext.Connected += (e) => {
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Failed to load game data: {ex}");
+            Console.WriteLine($"Failed to load game data: {ex.Message}");
         }
     });
 };
 
-// Intercept outgoing chat messages. Because we need to block the message,
-// we need to bring in the Intercept instance by accepting 2 arguments: (e, chat).
+// ----- Simple command manager -----
+// Intercept outgoing chat messages, handling commands starting with a '/'.
 ext.Intercept<ChatMsg>((e, chat) => {
     // If the message begins with '/':
     if (chat.Message.StartsWith('/'))
@@ -83,12 +128,12 @@ ext.Intercept<ChatMsg>((e, chat) => {
 
         switch (cmd.ToLowerInvariant())
         {
-            case "wave":
+            case "wave": // Usage: /wave
                 // Only Wave is supported on the Shockwave client.
                 // On Shockwave, this will throw an exception if the action is not Wave.
                 ext.Send(new ActionMsg(Actions.Wave));
                 break;
-            case "walk":
+            case "walk": // Usage: /walk x y
                 // Check if we have two arguments for the x, y coordinates.
                 if (args.Length < 2) return;
                 // Parse the coordinates.
