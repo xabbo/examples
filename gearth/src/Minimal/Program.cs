@@ -131,7 +131,7 @@ ext.Intercept<ChatMsg>((e, chat) => {
             case "wave": // Usage: /wave
                 // Only Wave is supported on the Shockwave client.
                 // On Shockwave, this will throw an exception if the action is not Wave.
-                ext.Send(new ActionMsg(Actions.Wave));
+                ext.Send(new ActionMsg(AvatarAction.Wave));
                 break;
             case "walk": // Usage: /walk x y
                 // Check if we have two arguments for the x, y coordinates.

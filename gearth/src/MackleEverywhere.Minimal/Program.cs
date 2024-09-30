@@ -23,7 +23,7 @@ ext.Intercept<AvatarsAddedMsg>(avatars => {
     {
         if (user.Name != ownName)
             user.Name = "Macklebee";
-        user.Figure = ext.Session.IsShockwave
+        user.Figure = ext.Session.Is(ClientType.Shockwave)
             ? "8311518001295012801125525"
             : "hr-828-58.hd-180-1.ch-210-73.lg-280-82.sh-295-1408";
         user.Gender = Gender.Male;

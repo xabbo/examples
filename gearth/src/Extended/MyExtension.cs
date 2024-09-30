@@ -39,14 +39,14 @@ partial class MyExtension : GEarthExtension
         _roomManager.AvatarChat += OnAvatarChat;
     }
 
-    protected override void OnInitialized(InitializedArgs e)
+    protected override void OnInitialized(InitializedEventArgs e)
     {
         base.OnInitialized(e);
 
         Console.WriteLine($"Extension intialized. (connected:{e.IsGameConnected})");
     }
 
-    protected override void OnConnected(GameConnectedArgs e)
+    protected override void OnConnected(ConnectedEventArgs e)
     {
         base.OnConnected(e);
 
@@ -203,7 +203,7 @@ partial class MyExtension : GEarthExtension
         case "wave": // Usage: /wave
             // Only Wave is supported on the Shockwave client.
             // On Shockwave, this will throw an exception if the action is not Wave.
-            Send(new ActionMsg(Actions.Wave));
+            Send(new ActionMsg(AvatarAction.Wave));
             break;
         case "walk": // Usage: /walk x y
             // Check if we have two arguments for the x, y coordinates.

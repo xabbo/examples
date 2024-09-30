@@ -1,8 +1,8 @@
 <Project>
     <ItemGroup Label="Xabbo package references">
-      <PackageReference Include="Xabbo.Common" Version="1.0.0-beta.214" />
-      <PackageReference Include="Xabbo.Core" Version="1.0.0-beta.238" />
-      <PackageReference Include="Xabbo.GEarth" Version="1.0.0-beta.70" />
-      <PackageReference Include="Xabbo.Messages" Version="1.0.0-beta.1" />
+      <PackageReference Include="Xabbo.Common" Version="1.0.0" />
+      <PackageReference Include="Xabbo.GEarth" Version="1.0.0" />
+      <PackageReference Include="Xabbo.Messages" Version="1.0.0" />
+      <PackageReference Include="Xabbo.Core" Version="1.0.0-beta.271" />
     </ItemGroup>
 </Project>
